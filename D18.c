@@ -1,24 +1,19 @@
 #include <stdio.h>
 
-static int first = 1;   // признак вывода первого элемента
-
-/* Рекурсивно выводит цифры числа n слева‑направо, разделяя их пробелом */
-void print_digits(int n)
-{
-    if (n >= 10)                 /* печатаем старшие разряды */
-        print_digits(n / 10);
-
-    if (!first) putchar(' ');
-    printf("%d", n % 10);
-    first = 0;
+void print_digits(int n) {
+    if (n == 0) return;
+    print_digits(n / 10);
+    printf("%d ", n % 10);
 }
 
-int main(void)
-{
-    int N;
-    if (scanf("%d", &N) != 1) return 0;
-
-    print_digits(N);
-    putchar('\n');
+int main(void) {
+    int n;
+    scanf("%d", &n);
+    if (n == 0) {
+        printf("0\n");
+    } else {
+        print_digits(n);
+        printf("\n");
+    }
     return 0;
 }
